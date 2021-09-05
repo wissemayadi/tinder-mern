@@ -1,8 +1,8 @@
 
 import './App.css';
-import Header from "./components/header/Header";
-import Main from "./components/Main/main";
-import SwipeButtons from "./components/swipe/swipeButtons";
+import Header from "./Header";
+import Main from "./main";
+import SwipeButtons from "./swipeButtons";
 function App() {
   return (
     <div className="app">

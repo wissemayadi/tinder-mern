@@ -1,26 +1,22 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from "axios";
 import "./card.css";
 import TinderCard from 'react-tinder-card';
-import Icon from "../../icont.jpeg";
+import Icon from "./icont.jpeg";
 
 function Main() {
 const[LastDirection,setLastDirection]=useState();
-const[people,setPeople]=useState(
-    
-    
-    [
+const[people,setPeople]=useState([]);
 
-{
-    name:'elon mask',
-    // url: "https://fr.wikipedia.org/wiki/Elon_Musk#/media/Fichier:Elon_Musk_Royal_Society.jpg"
-    url:"https://m.media-amazon.com/images/I/51L8icIu-hL.jpg"
-},
+useEffect(() => {
+async function fetchData(){
+    const req = await axios.get('/tinder/cards');
+    setPeople(req.data);
+}
+fetchData();
 
-{
-    name:'jeph bezos',
-    url:"https://pbs.twimg.com/profile_images/950908457334591493/3y7cbwQn.jpg"
-} ,
-] );
+console.log(people);
+},[])
 
 
 const swiped = (direction,nameToDelete) => {
